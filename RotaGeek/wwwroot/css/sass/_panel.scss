@@ -1,0 +1,9 @@
+﻿.panel.panel-default.panel-default-override {
+    border-radius: 0;
+    border: 0;
+
+    & > .panel-heading {
+        background-color: white;
+        border-bottom: 2px solid black;
+    }
+}
