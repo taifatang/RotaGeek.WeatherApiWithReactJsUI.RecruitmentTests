@@ -6,13 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\css\sass\StyleSheet.scss" />
-    <Content Include="wwwroot\css\sass\StyleSheet1.scss" />
-    <Content Include="wwwroot\css\sass\StyleSheet2.scss" />
-    <Content Include="wwwroot\css\sass\StyleSheet3.scss" />
     <Content Include="wwwroot\css\sass\_body.scss" />
     <Content Include="wwwroot\css\sass\_button.scss" />
-    <Content Include="wwwroot\css\sass\_default.scss" />
     <Content Include="wwwroot\css\sass\_panel.scss" />
     <Content Include="wwwroot\css\site.scss" />
   </ItemGroup>
