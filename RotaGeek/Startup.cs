@@ -37,6 +37,7 @@ namespace RotaGeek
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
