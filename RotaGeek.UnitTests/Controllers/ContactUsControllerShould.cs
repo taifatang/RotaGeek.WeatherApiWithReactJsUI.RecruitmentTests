@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Documents;
 using Moq;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 using RotaGeek.Controllers;
-using RotaGeek.Providers;
 using RotaGeek.Services;
 using RotaGeek.Services.Models;
 
@@ -51,14 +50,6 @@ namespace RotaGeek.UnitTests.Controllers
 
             _formServiceMock.Verify(x => x.SubmitAsync(It.IsAny<ContactForm>()), Times.Once);
         }
-
-        [Test]
-        public async Task Return_Bad_Request_If_Form_Is_Null()
-        {
-            var result = (StatusCodeResult)await _contactUsController.SubmitForm(null);
-
-            Assert.That(result.StatusCode == (int)HttpStatusCode.BadRequest);
-        }
         [Test]
         public async Task Return_Accepted_Status_Code_If_Succeed()
         {
@@ -87,6 +78,31 @@ namespace RotaGeek.UnitTests.Controllers
             Assert.That(result.StatusCode == (int)HttpStatusCode.BadRequest);
             Assert.That(operationResult.Errors.Count == 2);
             Assert.That(operationResult.Success == false);
+        }
+
+        [Test]
+        public async Task Return_All_Forms()
+        {
+            var forms = new List<ContactForm>()
+            {
+                new ContactForm()
+            };
+            _formServiceMock.Setup(x => x.RetrieveAllContactForms()).ReturnsAsync(() => forms);
+
+            var response = (JsonResult)await _contactUsController.Forms();
+
+            var returnedForms = (IEnumerable<ContactForm>)response.Value;
+            Assert.That(returnedForms.Count() == 1);
+        }
+
+        [Test]
+        public async Task Return_Internal_Server_Error_When_Error_Occured()
+        {
+            _formServiceMock.Setup(x => x.RetrieveAllContactForms()).Throws<Exception>();
+
+            var response = (StatusCodeResult)await _contactUsController.Forms();
+
+            Assert.That(response.StatusCode == 500);
         }
     }
 }

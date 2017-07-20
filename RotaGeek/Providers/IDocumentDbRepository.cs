@@ -4,7 +4,7 @@ using RotaGeek.Services.Models;
 
 namespace RotaGeek.Providers
 {
-    public interface IFormSubmissionProvider
+    public interface IDocumentDbRepository
     {
         Task<OperationResult> SubmitAsync(ContactForm form);
     }

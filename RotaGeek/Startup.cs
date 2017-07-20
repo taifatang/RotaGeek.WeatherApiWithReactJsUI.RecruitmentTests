@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RotaGeek.Configuration;
 using RotaGeek.Providers;
+using RotaGeek.Repository;
 using RotaGeek.Services;
 
 namespace RotaGeek
@@ -27,7 +32,18 @@ namespace RotaGeek
         {
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormValidationProvider, FormValidationProvider>();
-            services.AddTransient<IFormSubmissionProvider, FormSubmissionProvider>();
+
+            services.AddTransient<IDocumentClient, DocumentClient>(provider =>
+            {
+                return new DocumentClient(new Uri(RotaGeekConstant.CosmoDbEndpoint),
+                    RotaGeekConstant.CosmoDbPrimaryKey);
+            });
+            services.AddTransient<IDocumentDbRepository<ContactForm>, DocumentDbRepository<ContactForm>>(provider =>
+            {
+                var client = provider.GetRequiredService<IDocumentClient>();
+                return new DocumentDbRepository<ContactForm>("Form", "FormCollection", client);
+            });
+
             // Add framework services.
             services.AddMvc();
         }
@@ -39,7 +55,7 @@ namespace RotaGeek
             loggerFactory.AddDebug();
 
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute("default", "{controller=rotageek}/{action=index}"));
         }
     }
 }

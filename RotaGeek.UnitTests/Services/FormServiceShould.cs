@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using RotaGeek.Providers;
+using RotaGeek.Repository;
 using RotaGeek.Services;
 using RotaGeek.Services.Models;
 
@@ -13,15 +14,15 @@ namespace RotaGeek.UnitTests.Services
     public class FormServiceShould
     {
         private Mock<IFormValidationProvider> _formValidatorMock;
-        private Mock<IFormSubmissionProvider> _formSubmissionProviderMock;
+        private Mock<IDocumentDbRepository<ContactForm>> _documentDbMock;
         private FormService _formService;
 
         [SetUp]
         public void SetUp()
         {
             _formValidatorMock = new Mock<IFormValidationProvider>();
-            _formSubmissionProviderMock = new Mock<IFormSubmissionProvider>();
-            _formService = new FormService(_formValidatorMock.Object, _formSubmissionProviderMock.Object);
+            _documentDbMock = new Mock<IDocumentDbRepository<ContactForm>>();
+            _formService = new FormService(_formValidatorMock.Object, _documentDbMock.Object);
 
             _formValidatorMock.Setup(x => x.ValidateAsync(It.IsAny<ContactForm>()))
                 .Returns(Task.FromResult(new OperationResult()));
@@ -39,7 +40,7 @@ namespace RotaGeek.UnitTests.Services
         {
             await _formService.SubmitAsync(new ContactForm());
 
-            _formSubmissionProviderMock.Verify(x => x.SubmitAsync(It.IsAny<ContactForm>()), Times.Once);
+            _documentDbMock.Verify(x => x.CreateOrUpdateItemAsync(It.IsAny<ContactForm>()), Times.Once);
         }
 
         [Test]
@@ -47,7 +48,7 @@ namespace RotaGeek.UnitTests.Services
         {
             var actionResult = await _formService.SubmitAsync(new ContactForm());
 
-            _formSubmissionProviderMock.Verify(x => x.SubmitAsync(It.IsAny<ContactForm>()), Times.Once);
+            _documentDbMock.Verify(x => x.CreateOrUpdateItemAsync(It.IsAny<ContactForm>()), Times.Once);
             Assert.That(actionResult.Success);
             Assert.That(actionResult.Errors.Any() == false);
         }
@@ -94,7 +95,16 @@ namespace RotaGeek.UnitTests.Services
 
             await _formService.SubmitAsync(new ContactForm());
 
-            _formSubmissionProviderMock.Verify(x => x.SubmitAsync(It.IsAny<ContactForm>()), Times.Never);
+            _documentDbMock.Verify(x => x.CreateOrUpdateItemAsync(It.IsAny<ContactForm>()), Times.Never);
+        }
+        [Test]
+        public async Task Get_All_Contact_Form()
+        {
+            _documentDbMock.Setup(x => x.GetAllAsync()).ReturnsAsync(() => null);
+
+            var forms = await _formService.RetrieveAllContactForms();
+
+            _documentDbMock.Verify(x => x.GetAllAsync(), Times.Once);
         }
     }
 }

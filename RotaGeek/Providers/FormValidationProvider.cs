@@ -32,7 +32,7 @@ namespace RotaGeek.Providers
                     result.Success = false;
                 }
 
-                return new OperationResult();
+                return result;
             });
         }
     }
