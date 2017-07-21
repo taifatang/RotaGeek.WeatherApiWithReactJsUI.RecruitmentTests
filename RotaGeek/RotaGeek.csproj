@@ -10,6 +10,13 @@
     <Content Include="wwwroot\css\sass\_button.scss" />
     <Content Include="wwwroot\css\sass\_panel.scss" />
     <Content Include="wwwroot\css\site.scss" />
+    <Content Include="wwwroot\js\app.jsx" />
+    <Content Include="wwwroot\js\frame-components\contact-form.jsx" />
+    <Content Include="wwwroot\js\frame-components\frame.jsx" />
+    <Content Include="wwwroot\js\frame-components\jsx.jsx" />
+    <Content Include="wwwroot\js\frame-components\result.jsx" />
+    <Content Include="wwwroot\js\master.jsx" />
+    <Content Include="wwwroot\js\tutorial.jsx" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
@@ -23,6 +30,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
+    <PackageReference Include="React.AspNet" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />

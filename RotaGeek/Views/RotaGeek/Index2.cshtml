@@ -1,0 +1,87 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Contact us";
+    Layout = "Layout";
+}
+
+<section class="body-content">
+    <div class="row">
+        <div class="col-xs-5">
+
+            <div class="row">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-default-override">
+                        <div class="panel-heading">Contact us: </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td><input type="text" class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email Address:</td>
+                                        <td><input type="text" class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Message:</td>
+                                        <td><input type="text" class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Submit:</td>
+                                        <td><input type="submit" class="form-control" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-default-override">
+                        <div class="panel-heading">Result:</div>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <pre id="result" class="">{ Hello! }</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-6">
+
+            <div class="row">
+                <div class="row">
+                    <div class="panel panel-default panel-default-override">
+                        <div class="panel-heading clearfix">
+                            Weather:
+                        </div>
+                        <div class="panel-body">
+                            <a class="btn btn-default btn-default-override">Get Weather</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-default panel-default-override">
+                    <div class="panel-heading clearfix">
+                        Clock:
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-default btn-default-override">Get Time</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
