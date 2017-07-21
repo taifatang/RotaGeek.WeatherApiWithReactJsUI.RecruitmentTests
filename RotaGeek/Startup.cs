@@ -1,12 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using React.AspNet;
+using RotaGeek.Configuration;
+using RotaGeek.Providers;
+using RotaGeek.Repository;
+using RotaGeek.Services;
 
 namespace RotaGeek
 {
@@ -27,7 +32,23 @@ namespace RotaGeek
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IFormService, FormService>();
+            services.AddTransient<IFormValidationProvider, FormValidationProvider>();
+
+            services.AddTransient<IDocumentClient, DocumentClient>(provider =>
+            {
+                return new DocumentClient(new Uri(RotaGeekConstant.CosmoDbEndpoint),
+                    RotaGeekConstant.CosmoDbPrimaryKey);
+            });
+            services.AddTransient<IDocumentDbRepository<ContactForm>, DocumentDbRepository<ContactForm>>(provider =>
+            {
+                var client = provider.GetRequiredService<IDocumentClient>();
+                return new DocumentDbRepository<ContactForm>("Form", "FormCollection", client);
+            });
+
             // Add framework services.
+            services.AddReact();
             services.AddMvc();
         }
 
@@ -37,8 +58,15 @@ namespace RotaGeek
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseReact(config =>
+            {
+                config
+                    .AddScript("~/Scripts/First.jsx")
+                    .AddScript("~/Scripts/Second.jsx");
+            });
+
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvc(routes => routes.MapRoute("default", "{controller=rotageek}/{action=index}"));
         }
     }
 }
