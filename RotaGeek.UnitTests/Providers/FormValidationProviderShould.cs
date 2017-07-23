@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 using RotaGeek.Providers;
-using RotaGeek.Services;
+using RotaGeek.Services.Models;
 
 namespace RotaGeek.UnitTests.Providers
 {
+    //TODO: add more tests & Extract validator into behaviour validator?
     [TestFixture]
     public class FormValidationProviderShould
     {
@@ -30,7 +31,6 @@ namespace RotaGeek.UnitTests.Providers
 
             var result = await validator.ValidateAsync(form);
 
-            //_validatorFactoryMock.Verify(x => x.Validate());
         }
     }
 }

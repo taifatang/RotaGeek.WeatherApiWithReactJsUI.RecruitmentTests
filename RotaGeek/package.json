@@ -9,6 +9,28 @@
     "gulp-uglify": "1.2.0",
     "rimraf": "2.2.8",
     "gulp-sass": "2.2.0",
-    "gulp-less": "3.3.2"
+    "gulp-less": "3.3.2",
+    "gulp-run": "1.6.5",
+    "gulp-minify-css": "0.3.11",
+    "gulp-jshint": "1.9.0",
+    "browser-sync": "1.8.2",
+    "browserify": "3.44.2",
+    "vinyl-source-stream": "1.0.0",
+    "vinyl-buffer": "1.0.0",
+    "reactify": "0.17.1",
+    "del": "1.1.1"
+  },
+  "paths": {
+    "less": "./wwwroot/assets/less/*.less",
+    "sass": "./wwwroot/css/**/*.scss",
+    "js": "./wwwroot/app/**/*.js",
+    "jsx": "./wwwroot/app/**/*.jsx",
+    "app": "./wwwroot/app/app.js",
+    "html": "./views/**/*.html"
+  },
+  "dest": {
+    "style": "./wwwroot/app/site.css",
+    "app": "./wwwroot/app/app.js",
+    "dist": "./wwwroot/app/dist"
   }
 }

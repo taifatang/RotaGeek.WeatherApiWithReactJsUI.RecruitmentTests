@@ -1,4 +1,4 @@
-﻿namespace RotaGeek.Services
+﻿namespace RotaGeek.Services.Models
 {
     public class ContactForm
     {

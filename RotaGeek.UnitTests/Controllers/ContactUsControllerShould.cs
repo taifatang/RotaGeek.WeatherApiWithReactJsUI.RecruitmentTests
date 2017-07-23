@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.Documents;
 using Moq;
 using NUnit.Framework;
 using RotaGeek.Controllers;
@@ -55,7 +53,7 @@ namespace RotaGeek.UnitTests.Controllers
         {
             var result = (StatusCodeResult)await _contactUsController.SubmitForm(_form);
 
-            Assert.That(result.StatusCode == (int)HttpStatusCode.OK);
+            Assert.That(result.StatusCode == (int)HttpStatusCode.Created);
         }
         [Test]
         public async Task Return_Errors_If_Failed()

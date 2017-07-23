@@ -12,6 +12,7 @@ using RotaGeek.Configuration;
 using RotaGeek.Providers;
 using RotaGeek.Repository;
 using RotaGeek.Services;
+using RotaGeek.Services.Models;
 
 namespace RotaGeek
 {
@@ -35,7 +36,8 @@ namespace RotaGeek
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormValidationProvider, FormValidationProvider>();
-
+            services.AddTransient<IWeatherService, WeatherService>();
+            services.AddTransient<IHttpClientWrapper, HttpClientWrapper>();
             services.AddTransient<IDocumentClient, DocumentClient>(provider =>
             {
                 return new DocumentClient(new Uri(RotaGeekConstant.CosmoDbEndpoint),
