@@ -27,7 +27,7 @@ namespace RotaGeek.Controllers
                 return BadRequestWithErrors(result);
             }
 
-            return Ok();
+            return new StatusCodeResult((int)HttpStatusCode.Created);
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace RotaGeek.Controllers
         {
             return new JsonResult(result)
             {
-                StatusCode = (int) HttpStatusCode.BadRequest
+                StatusCode = (int)HttpStatusCode.BadRequest
             };
         }
     }

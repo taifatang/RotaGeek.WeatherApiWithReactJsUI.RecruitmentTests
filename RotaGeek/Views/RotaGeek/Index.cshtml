@@ -1,23 +1,19 @@
 @{
-    Layout = null;
+    ViewBag.Title = "Contact us";
+    Layout = "Layout";
 }
-<html>
-<head>
-    <title>Hello React</title>
-</head>
-<body>
-<h1>React App</h1>
-<div id="app"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
-@*<script src="@Url.Content("~/js/tutorial.jsx")"></script>*@
+
+<div id="app"></div>
+
+<script src="@Url.Content("~/js/frame-components/clock.jsx")"></script>
 <script src="@Url.Content("~/js/frame-components/frame.jsx")"></script>
 <script src="@Url.Content("~/js/frame-components/result.jsx")"></script>
+<script src="@Url.Content("~/js/frame-components/form-entry.jsx")"></script>   
+<script src="@Url.Content("~/js/frame-components/form-table.jsx")"></script>
 <script src="@Url.Content("~/js/frame-components/contact-form.jsx")"></script>
 
 <script src="@Url.Content("~/js/app.jsx")"></script>
-
-
-</body>
-</html>
