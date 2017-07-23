@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using RotaGeek.Services;
 using RotaGeek.Services.Models;
 
 namespace RotaGeek.Providers

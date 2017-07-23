@@ -60,12 +60,12 @@
 
                     <div className="col-xs-6">
 
-                        <Frame title="Weather: ">
-                            <a className="btn btn-default btn-default-override">Get Weather</a>
+                        <Frame title="Weather:">
+                            <Weather />
                         </Frame>
 
                         <Frame title="Clock: ">
-                            <Clock/>
+                            <Clock />
                         </Frame>
 
                         <Frame title="Client Queries: ">
@@ -88,7 +88,7 @@
         }
     },
 
-    updateModel: function(response) {
+    updateModel: function (response) {
         this.setState({
             queries: this.TryParseJSON(response.responseText)
         });
@@ -121,8 +121,8 @@
 ReactDOM.render(
     React.createElement(App,
         {
-            formPostUrl: "http://localhost:7595/contactus/submitform",
-            queriesGetUrl: "http://localhost:7595/contactus/forms",
+            formPostUrl: window.location.origin + "/contactus/submitform",
+            queriesGetUrl: window.location.origin + "/contactus/forms",
             pollInterval: 5000
         },
         null),

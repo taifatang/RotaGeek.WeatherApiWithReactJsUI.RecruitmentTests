@@ -16,9 +16,8 @@
     <Content Include="wwwroot\js\frame-components\form-entry.jsx" />
     <Content Include="wwwroot\js\frame-components\form-table.jsx" />
     <Content Include="wwwroot\js\frame-components\frame.jsx" />
-    <Content Include="wwwroot\js\frame-components\jsx.jsx" />
-    <Content Include="wwwroot\js\frame-components\query.jsx" />
     <Content Include="wwwroot\js\frame-components\result.jsx" />
+    <Content Include="wwwroot\js\frame-components\weather.jsx" />
     <Content Include="wwwroot\rotageek.PNG" />
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +32,14 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="React.AspNet" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web" />
   </ItemGroup>
 
 </Project>

@@ -257,10 +257,11 @@
   <ItemGroup>
     <Compile Include="Controllers\ContactUsControllerShould.cs" />
     <Compile Include="Controllers\RotaGeekControllerShould.cs" />
-    <Compile Include="Repository\ContactUsDataRepositoryShould.cs" />
+    <Compile Include="Controllers\WeatherControllerShould.cs" />
     <Compile Include="Services\FormServiceShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\FormValidationProviderShould.cs" />
+    <Compile Include="Services\WeatherServiceShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
