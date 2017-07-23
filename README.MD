@@ -2,22 +2,22 @@
 https://rotageek.azurewebsites.net/
 ## Introduction
 
-###Technology stack
+### Technology stack
 * ReactJs - Non Babel
 * AspNetCore - .Net 4.6
 * CosmoDb
 * APIXU - Weather provider
 * GoogleMap - Location mapping provider
 
-###Component
+### Component
 * API
-    -ContactUs
-        -SubmitPost
-        -GetAllqueries
-    -RotaGeek
-        -Index
-    -Weather
-        -GetWeather
+  * ContactUs
+    * SubmitPost
+    * GetAllqueries
+  * RotaGeek
+    * Index
+    * Weather
+  * GetWeather
 * Form
 * Clock
 * Weather
