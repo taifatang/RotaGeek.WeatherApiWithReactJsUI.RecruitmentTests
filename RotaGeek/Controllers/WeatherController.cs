@@ -17,7 +17,7 @@ namespace RotaGeek.Controllers
         [HttpGet]
         public async Task<IActionResult> GetWeather(WeatherRequest request)
         {
-            var weather = await _weatherService.GetAsync(request.Location);
+            var weather = await _weatherService.GetWeatherAsync(request.Location);
             return Json(weather);
         }
     }

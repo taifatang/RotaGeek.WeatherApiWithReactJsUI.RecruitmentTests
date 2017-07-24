@@ -5,6 +5,6 @@ namespace RotaGeek.Services
 {
     public interface IWeatherService
     {
-        Task<Weather> GetAsync(string location);
+        Task<Weather> GetWeatherAsync(string location);
     }
 }

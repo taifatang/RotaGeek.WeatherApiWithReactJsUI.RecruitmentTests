@@ -1,4 +1,6 @@
-﻿var gulp = require("gulp"),
+﻿//Partially Deprecated: Not using babel, only used for sass
+
+var gulp = require("gulp"),
     sass = require("gulp-sass"),
     rename = require("gulp-rename"),
     del = require('del'),

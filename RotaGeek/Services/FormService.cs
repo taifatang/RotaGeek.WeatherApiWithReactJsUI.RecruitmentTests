@@ -29,7 +29,7 @@ namespace RotaGeek.Services
             return validateResult;
         }
 
-        public async Task<IEnumerable<ContactForm>> RetrieveAllContactForms()
+        public async Task<IEnumerable<ContactForm>> GetAllFormsAsync()
         {
             return await _documentDbRepository.GetAllAsync();
         }

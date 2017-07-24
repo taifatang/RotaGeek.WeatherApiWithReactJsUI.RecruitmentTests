@@ -15,7 +15,7 @@ namespace RotaGeek.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Weather> GetAsync(string location)
+        public async Task<Weather> GetWeatherAsync(string location)
         {
             if (string.IsNullOrWhiteSpace(location))
             {

@@ -38,11 +38,9 @@ namespace RotaGeek
             services.AddTransient<IFormValidationProvider, FormValidationProvider>();
             services.AddTransient<IWeatherService, WeatherService>();
             services.AddTransient<IHttpClientWrapper, HttpClientWrapper>();
-            services.AddTransient<IDocumentClient, DocumentClient>(provider =>
-            {
-                return new DocumentClient(new Uri(RotaGeekConstant.CosmoDbEndpoint),
-                    RotaGeekConstant.CosmoDbPrimaryKey);
-            });
+            services.AddTransient<IDocumentClient, DocumentClient>(
+                provider => new DocumentClient(new Uri(RotaGeekConstant.CosmoDbEndpoint), RotaGeekConstant.CosmoDbPrimaryKey)
+                );
             services.AddTransient<IDocumentDbRepository<ContactForm>, DocumentDbRepository<ContactForm>>(provider =>
             {
                 var client = provider.GetRequiredService<IDocumentClient>();
@@ -62,9 +60,7 @@ namespace RotaGeek
 
             app.UseReact(config =>
             {
-                config
-                    .AddScript("~/Scripts/First.jsx")
-                    .AddScript("~/Scripts/Second.jsx");
+                config.AddScript("~/wwwroot/js/**/*.jsx");
             });
 
             app.UseStaticFiles();
