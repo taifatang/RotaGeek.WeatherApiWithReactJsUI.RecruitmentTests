@@ -1,11 +1,7 @@
 ﻿var FormTable = React.createClass({
 
-    componentWillMount: function() {
-       
-    },
-
     render: function () {
-        //TODO: Do not use i an key
+        //TODO: use unique key instead
         var queries = this.props.data.map(function (query, i) {
             return (
                 <FormEntry key={i} name={query.name} email={query.email} message={query.message} />
