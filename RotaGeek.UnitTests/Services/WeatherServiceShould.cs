@@ -34,20 +34,20 @@ namespace RotaGeek.UnitTests.Services
         {
             var location = "london";
 
-             await _weatherService.GetAsync(location);
+             await _weatherService.GetWeatherAsync(location);
 
             _httpClientMock.Verify(x => x.GetAsync<Weather>(It.IsAny<Uri>()), Times.Once);
         }
         [Test]
         public  void Fail_When_Location_Is_Not_Set()
         {
-            Assert.ThrowsAsync<ArgumentNullException>(() => _weatherService.GetAsync(null));
+            Assert.ThrowsAsync<ArgumentNullException>(() => _weatherService.GetWeatherAsync(null));
         }
         [Test]
         public void Fail_When_Location_Is_Empty()
         {
             var location = "";
-            Assert.ThrowsAsync<ArgumentNullException>(() => _weatherService.GetAsync(location));
+            Assert.ThrowsAsync<ArgumentNullException>(() => _weatherService.GetWeatherAsync(location));
         }
     }
 }

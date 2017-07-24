@@ -102,7 +102,7 @@ namespace RotaGeek.UnitTests.Services
         {
             _documentDbMock.Setup(x => x.GetAllAsync()).ReturnsAsync(() => null);
 
-            var forms = await _formService.RetrieveAllContactForms();
+            var forms = await _formService.GetAllFormsAsync();
 
             _documentDbMock.Verify(x => x.GetAllAsync(), Times.Once);
         }

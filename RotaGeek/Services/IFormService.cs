@@ -7,6 +7,6 @@ namespace RotaGeek.Services
     public interface IFormService
     {
         Task<OperationResult> SubmitAsync(ContactForm form);
-        Task<IEnumerable<ContactForm>> RetrieveAllContactForms();
+        Task<IEnumerable<ContactForm>> GetAllFormsAsync();
     }
 }

@@ -85,7 +85,7 @@ namespace RotaGeek.UnitTests.Controllers
             {
                 new ContactForm()
             };
-            _formServiceMock.Setup(x => x.RetrieveAllContactForms()).ReturnsAsync(() => forms);
+            _formServiceMock.Setup(x => x.GetAllFormsAsync()).ReturnsAsync(() => forms);
 
             var response = (JsonResult)await _contactUsController.Forms();
 
@@ -96,7 +96,7 @@ namespace RotaGeek.UnitTests.Controllers
         [Test]
         public async Task Return_Internal_Server_Error_When_Error_Occured()
         {
-            _formServiceMock.Setup(x => x.RetrieveAllContactForms()).Throws<Exception>();
+            _formServiceMock.Setup(x => x.GetAllFormsAsync()).Throws<Exception>();
 
             var response = (StatusCodeResult)await _contactUsController.Forms();
 

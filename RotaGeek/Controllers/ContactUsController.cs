@@ -27,7 +27,7 @@ namespace RotaGeek.Controllers
                 return BadRequestWithErrors(result);
             }
 
-            return new StatusCodeResult((int)HttpStatusCode.Created);
+            return StatusCode((int) HttpStatusCode.Created);
         }
 
         [HttpGet]
@@ -35,16 +35,16 @@ namespace RotaGeek.Controllers
         {
             try
             {
-                var forms = await _formService.RetrieveAllContactForms();
+                var forms = await _formService.GetAllFormsAsync();
                 return Json(forms);
             }
             catch (DocumentClientException)
             {
-                return new StatusCodeResult((int)HttpStatusCode.ServiceUnavailable);
+                return StatusCode((int)HttpStatusCode.ServiceUnavailable);
             }
             catch (Exception)
             {
-                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
 

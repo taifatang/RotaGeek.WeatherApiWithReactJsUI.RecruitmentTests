@@ -9,7 +9,7 @@ namespace RotaGeek.Providers
     {
         public async Task<OperationResult> ValidateAsync(ContactForm form)
         {
-            return await Task.Factory.StartNew<OperationResult>(() =>
+            return await Task.Factory.StartNew(() =>
             {
                 var result = new OperationResult();
 
