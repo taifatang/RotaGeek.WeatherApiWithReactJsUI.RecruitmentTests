@@ -39,6 +39,17 @@
         xhr.send(JSON.stringify(data));
     },
 
+    handleXHRStateChange: function (event) {
+
+        var isPolling = event.target.status === 200;
+
+        if (isPolling) {
+            this.updateModel(event.target);
+        } else {
+            this.updateNetworkState(event.target);
+        }
+    },
+
     render: function () {
 
         return (
@@ -75,17 +86,6 @@
                 </div>
             </section>
         );
-    },
-
-    handleXHRStateChange: function (event) {
-
-        var isPolling = event.target.status === 200;
-
-        if (isPolling) {
-            this.updateModel(event.target);
-        } else {
-            this.updateNetworkState(event.target);
-        }
     },
 
     updateModel: function (response) {

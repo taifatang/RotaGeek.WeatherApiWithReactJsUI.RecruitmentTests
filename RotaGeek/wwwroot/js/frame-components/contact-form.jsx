@@ -22,21 +22,11 @@
 
         e.preventDefault();
 
-        var name = this.state.name.trim(),
-            email = this.state.email.trim(),
-            message = this.state.message.trim();
+        //TODO: client side validation
 
         this.props.onFormSubmit(this.state);
 
         this.clearState();
-    },
-
-    clearState: function() {
-        this.setState({ name: '', email: '', message: '' });
-    },
-
-    IsEmpty: function(model) {
-        return model == null || value.length === 0;
     },
 
     render: function () {
@@ -68,5 +58,13 @@
                 </tbody>
             </table>
         );
-    }
+    },
+
+    clearState: function () {
+        this.setState({ name: '', email: '', message: '' });
+    },
+
+    IsEmpty: function (model) {
+        return model == null || value.length === 0;
+    },
 });
