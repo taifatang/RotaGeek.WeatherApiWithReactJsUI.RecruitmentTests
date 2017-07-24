@@ -60,7 +60,8 @@ namespace RotaGeek
 
             app.UseReact(config =>
             {
-                config.AddScript("~/wwwroot/js/**/*.jsx");
+                //server precompiling
+                //config.AddScript("~/wwwroot/js/**/*.jsx");
             });
 
             app.UseStaticFiles();
