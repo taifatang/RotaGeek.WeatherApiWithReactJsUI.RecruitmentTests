@@ -35,7 +35,7 @@
     },
 
     getLocationByLatLng: function (lat, long, completionHandler) {
-        var urlWithLatLng = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&sensor=true";
+        var urlWithLatLng = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&sensor=true";
         this.httpGet(urlWithLatLng, this.handleFetchUserLocation(completionHandler));
     },
 
@@ -73,7 +73,7 @@
         }.bind(this));
     },
 
-    handleGeolocationError: function () {
+    handleGeolocationError: function (e) {
         this.getWeather("london");
     },
 
